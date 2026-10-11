@@ -7,6 +7,22 @@
 
 #define MAX_INPUT 1024
 #define MAX_ARGS 64
+#define MAX_HISTORY 100
+#define MAX_COMMAND_LENGTH 1024
+
+static char history[MAX_HISTORY][MAX_COMMAND_LENGTH];
+static int history_count =0;
+static int current_index=0;
+
+void add_to_history(char const *cmd){
+    if (history_count<MAX_HISTORY){
+        strncpy(history[history_count],cmd,MAX_COMMAND_LENGTH-1);
+        history[history_count][MAX_COMMAND_LENGTH-1]='\0';
+        history_count++;
+    }
+    current_index = history_count;
+}
+
 
 
 int main(){
