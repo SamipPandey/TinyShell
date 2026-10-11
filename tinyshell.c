@@ -23,7 +23,23 @@ void add_to_history(char const *cmd){
     current_index = history_count;
 }
 
-
+const char* get_history_up(){
+    if(current_index>0){
+        current_index--;
+        return history[current_index];
+    }
+    return NULL;
+}
+const char* get_history_down(){
+    if(current_index<history_count-1){
+        current_index++;
+        return history[current_index];
+    }else{
+        current_index=history_count;
+        return "";
+    }
+    return NULL;
+}
 
 int main(){
     char input[MAX_INPUT];
